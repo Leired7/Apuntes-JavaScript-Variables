@@ -83,3 +83,25 @@ Veámoslo con tres ejemplos:
   console.log(x);  // 55
 ```
 Como podemos ver en este ejemplo, al imprimir ```x``` con ```console.log``` dentro del scope del ```if statement```, se muestra el contenido de ```x``` en la consola. Y también, si hacemos la llamada de ```console.log``` fuera del scope del ```if statement``` nos mostrará efectivamente el mismo valor en la consola. Esto es debido a que ```var``` tiene un alcance global y, a pesar de haber sido declarada dentro de un ```if statement```, sigue teniendo el mismo valor fuera de este scope.
+
+En cambio, en este otro ejemplo:
+
+```javascript
+  if (true) {
+    let y = 10;
+    console.log(y);  // 10
+  }
+  console.log(y);  // Uncaught ReferenceError: y is not defined
+```
+En este caso, el primer ```console.log``` sí nos lo mostraría en la consola correctamente, mostrando el valor de ```y```. Pero en el segundo caso, nos da un error. Nos dice que ```y is not defined```. Esto es debido a que la variable ```y```, que hemos declarado con ```let```, solo existe dentro del scope en el que ha sido declarada. En otras palabras: ```y``` solo existe dentro del ```if statement```. Por eso cuando intentamos imprimirla en la consola fuera del ```if statement``` nos marca como que la variable no existe.
+
+Con ```const``` ocurriría lo mismo:
+
+```javascript
+  if (true) {
+    const z = 'Wild Code School';
+    console.log(z);  // Wild Code School
+  }
+  console.log(z);  // Uncaught ReferenceError: z is not defined
+```
+Si imprimimos ```z``` fuera del scope del ```if statement``` te saldrá un error indicando que la variable no existe. Porque, al igual que en ```let```, estas variables solo existen dentro del scope donde han sido declaradas. 
